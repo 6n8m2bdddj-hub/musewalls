@@ -8,7 +8,8 @@ document.querySelectorAll('.play').forEach(link => {
     event.preventDefault();
     title.textContent = link.dataset.title;
     video.setAttribute('aria-label', title.textContent);
-    video.poster = link.href.replace(/\.mp4$/, '.jpg');
+    const poster = link.getAttribute('href').replace(/\.mp4$/, '.jpg');
+    video.poster = 'preview/640/' + poster;
     video.src = link.href;
     dialog.showModal();
     video.play().catch(() => { /* Native controls remain available for manual playback. */ });
